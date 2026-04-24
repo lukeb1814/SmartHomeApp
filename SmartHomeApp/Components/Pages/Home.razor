@@ -1,0 +1,76 @@
+﻿@using SmartHomeApp.Components.Layout
+@layout EmptyLayout
+@page "/"
+
+<PageTitle>Smart Home App</PageTitle>
+
+<style>
+    .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(15,23,42,0.1);
+        padding: 24px 24px 26px;
+        margin-bottom: 26px;
+        border-top: 4px solid #052767;
+    }
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(15,23,42,0.15);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+    .welcome-banner {
+        background: linear-gradient(135deg, #052767 0%, #3a0647 100%);
+        color: white;
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 26px;
+    }
+
+        .welcome-banner h1 {
+            margin: 0 0 8px 0;
+            font-size: 2rem;
+        }
+
+        .welcome-banner p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+</style>
+
+
+<h1>Welcome to the all-in-one smart home app for your house</h1>
+
+<section class="card">
+    <NavLink class="nav-link" href="Lighting">
+        <h2>Lighting💡</h2>
+        <p>Change the brightness of the lights in your house.</p>
+    </NavLink>
+</section>
+
+<section class="card">
+    <NavLink class="nav-link" href="Utilities">
+        <h2>Utilities🔋🚰</h2>
+        <p>Check your utility usage and how much you currently have due</p>
+    </NavLink>
+</section>
+
+<section class="card">
+    <NavLink class="nav-link" href="HeatingCooling">
+        <h2>Heating and Cooling🌡️</h2>
+        <p>Change the temperature in your house</p>
+    </NavLink>
+</section>
+
+<section class="card">
+    <NavLink class="nav-link" href="Garage">
+        <h2>Garage🚗</h2>
+        <p>Open and close your garage door</p>
+    </NavLink>
+</section>
+

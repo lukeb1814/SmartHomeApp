@@ -1,0 +1,58 @@
+﻿@page "/Lighting"
+
+<style>
+
+    img {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+.btn-group button {
+  background-color: #390546; /* Green background */
+        border: 1px solid #261152; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;}
+
+
+</style>
+
+<h3>Lighting 💡</h3>
+
+<img src="/Images/Lightbulb.png" style="width:320px;height:426px;">
+
+<div class="btn-group" style="width:100%">
+  <button type="button" button style="width:50%" @onclick="LightON">On</button>
+  <button type="button" button style="width:50%" @onclick=LightOFF>Off</button>
+</div>
+
+
+
+@code {
+
+    private void LightON()
+    {
+        
+
+
+    }
+
+    private void LightOFF()
+    {
+        
+        
+        
+
+
+    }
+
+}
