@@ -1,5 +1,67 @@
 ﻿@page "/HeatingCooling"
-<h3>Heating and Cooling🌡️</h3>
+<h3>Heating and Cooling</h3>
+
+<style>
+
+    img {
+        display: block;
+        margin: auto;
+        width: 50%;
+    }
+
+    .btn-group button {
+        background-color: #390546; /* Green background */
+        border: 1px solid #261152; /* Green border */
+        color: white; /* White text */
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+    }
+
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #390546;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #390546;
+            cursor: pointer;
+        }
+</style>
+
+<h3>Temperature control</h3>
+<div class="slidecontainer">
+    <!-- use two-way binding so C# receives live updates -->
+    <input type="range" min="1" max="100" class="slider" id="myRange" />
+
+</div>
+
+
 
 @code {
 

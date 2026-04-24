@@ -1,6 +1,78 @@
 ﻿@page "/Utilities"
 <h3>Utilities 🔋🚰</h3>
 
+<style>
+
+    .cards-container {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap; /* allow wrapping on small screens */
+        align-items: stretch;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(15,23,42,0.1);
+        padding: 24px 24px 26px;
+        margin-bottom: 26px;
+        border-top: 4px solid #052767;
+        min-height:500px; /* ensure a vertical card height */
+        width: 500px;
+        text-align: center;
+    }
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(15,23,42,0.15);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 2rem;
+            opacity: 0.9;
+        }
+</style>
+
+
+<div class="cards-container">
+    <section class="card">
+        <NavLink class="nav-link" href="Gas">
+            <h2>Gas</h2>
+            <p>View and manage your gas usage.</p>
+        </NavLink>
+    </section>
+
+    <section class="card">
+        <NavLink class="nav-link" href="Water">
+            <h2>Water</h2>
+            <p>View and manage your water usage.</p>
+        </NavLink>
+    </section>
+
+    <section class="card">
+        <NavLink class="nav-link" href="Electrical">
+            <h2>Electric</h2>
+            <p>View and manage your electricity usage.</p>
+        </NavLink>
+    </section>
+</div>
+
+
+
+
 @code {
 
 }
