@@ -1,6 +1,44 @@
 ﻿@page "/water"
-<h3>Water</h3>
+@rendermode InteractiveServer
 
+<h1>Water</h1>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table style="width:100%">
+    <tr>
+        <th>Amount Used In cubic meters</th>
+        <th>Amount due in £</th>
+
+    </tr>
+    <tr>
+        <td>17.65</td>
+        <td>69</td>
+
+    </tr>
+
+</table>
+<br />
+<br>
+<h3>Calculate Usage per month</h3>
+Water Usage:
+<input id="WaterUsage" type="number" @bind="WaterUsage" min="0">
+
+<button id="calcBtn" @onclick="calculateWater">Calculate Water Price</button>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red; font-weight: bold;">@errorMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(resultMessage))
+{
+    <p style="color: green; font-weight: bold; font-size: 1.2rem;">@resultMessage</p>
+}
 
 
 
@@ -8,5 +46,22 @@
 
 
 @code {
+
+    private double? WaterUsage;
+    private string? errorMessage;
+    private string? resultMessage;
+    private void calculateWater()
+    {
+        errorMessage = null;
+        resultMessage = null;
+        if (WaterUsage == null || WaterUsage < 0)
+        {
+            errorMessage = "Please enter a valid non-negative number for water usage.";
+            return;
+        }
+        double amountDue = WaterUsage.Value * 2.753 * 1.42; // Assuming a rate of £0.002 per litre
+        resultMessage = $"For {WaterUsage} cubic meters, the amount due is £{amountDue:F2}.";
+        errorMessage = string.Empty;
+    }
 
 }

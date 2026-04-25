@@ -1,0 +1,52 @@
+﻿@page "/Garage"
+@rendermode InteractiveServer
+
+<style>
+.button {
+  border: none;
+  color: black;
+  padding: 32px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+}
+.button:hover{
+            background-color: #390546;
+            color: white;
+}
+
+</style>
+
+<h3>Garage</h3>
+
+<button class="button" @onclick="openDoor">Open</button>
+<button class="button" @onclick="closeDoor">Close</button>
+
+
+@if (!string.IsNullOrEmpty(resultMessage))
+{
+    <p style="color: green; font-weight: bold; font-size: 1.2rem;">@resultMessage</p>
+}
+
+@code {
+    private string? resultMessage = null;
+
+    private void openDoor()
+    {
+        // Logic to open the garage door
+        resultMessage = "Garage door opened successfully!";
+
+    }
+
+    private void closeDoor()
+    {
+        // Logic to close the garage door
+        resultMessage = "Garage door closed successfully!";
+
+    }
+}

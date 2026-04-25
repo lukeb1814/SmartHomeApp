@@ -1,6 +1,66 @@
 ﻿@page "/electrical"
-<h3>Electrical</h3>
+@rendermode InteractiveServer
+<h1>Electrical</h1>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table style="width:100%">
+    <tr>
+        <th>Amount Used In KWH</th>
+        <th>Amount due in £</th>
+
+    </tr>
+    <tr>
+        <td>150</td>
+        <td>54.41</td>
+
+    </tr>
+
+</table>
+<br />
+<br>
+<h3>Calculate Usage</h3>
+Electrical Usage:
+<input id="ElectricalUsage" type="number" @bind="ElectricalUsage" min="0">
+
+<button id="calcBtn" @onclick="calculateElectrical">Calculate Electrical Price</button>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red; font-weight: bold;">@errorMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(resultMessage))
+{
+    <p style="color: green; font-weight: bold; font-size: 1.2rem;">@resultMessage</p>
+}
+
+
 
 @code {
+
+    private double? ElectricalUsage;
+    private string? errorMessage;
+    private string? resultMessage;
+
+    private void calculateElectrical()
+    {
+
+        errorMessage = null;
+        resultMessage = null;
+        if (ElectricalUsage == null || ElectricalUsage < 0)
+        {
+            errorMessage = "Please enter a valid non-negative number for electrical usage.";
+            return;
+        }
+        double amountDue = ElectricalUsage.Value * 0.2467 * 1.05 * 1.4004; // Assuming a rate of £0.0553 per KWH
+        resultMessage = $"For {ElectricalUsage} KWH, the amount due is £{amountDue:F2}.";
+        errorMessage = string.Empty;
+    }
+
 
 }

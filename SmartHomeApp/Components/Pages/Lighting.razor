@@ -7,19 +7,19 @@
 <style>
 
     img {
-  display: block;
-  margin: auto;
-  width: 50%;
-}
+        display: block;
+        margin: auto;
+        width: 50%;
+    }
 
-.btn-group button {
-  background-color: #390546; /* Green background */
+    .btn-group button {
+        background-color: #390546; /* Green background */
         border: 1px solid #261152; /* Green border */
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
-}
+        color: white; /* White text */
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+    }
 
     .slidecontainer {
         width: 100%;
@@ -55,9 +55,6 @@
             background: #390546;
             cursor: pointer;
         }
-    
-
-
 </style>
 
 <h3>Lighting 💡</h3>
@@ -73,24 +70,26 @@
 <br>
 
 
-<h3>Brightness</h3>
+<h1>Custom Range Slider</h1>
+<p>Drag the slider to display the current value.</p>
+
 <div class="slidecontainer">
-    <!-- use two-way binding so C# receives live updates -->
-    <input type="range" min="1" max="100" class="slider" id="myRange"
-           @bind="brightness" @bind:event="oninput" />
+    <!-- Use only @bind (no static value attribute) for live updates -->
+    <input type="range" min="1" max="100" class="slider" @bind="brightness" @bind:event="oninput" />
     <p>Value: <span id="demo">@brightness</span></p>
 </div>
 
 
-@code {
-    private int brightness = 100;
 
-    private string ImageStyle =>
+@code {
+    public int brightness;
+
+    public string ImageStyle =>
     $"display:block;margin:auto;width:320px;height:412px;-webkit-filter:brightness({brightness}%);filter:brightness({brightness}%);transition:filter .12s linear;";
 
-    public string LightStatusON => $"display:block;margin:auto;width:320px;height:412px;brightness:100%;filter:brightness(100%);transition:filter .12s linear;";
+    
 
-    private void OnSliderInput(ChangeEventArgs e)
+    public void OnSliderInput(ChangeEventArgs e)
     {
         if (e?.Value != null && int.TryParse(e.Value.ToString(), out var v))
         {
@@ -105,13 +104,13 @@
     }
 
 
-    private Task LightON()
+    public Task LightON()
     {
-        
+        brightness = 100;
         return Task.CompletedTask;
     }
 
-    private Task LightOFF()
+    public Task LightOFF()
     {
         brightness = 0;
         return Task.CompletedTask;

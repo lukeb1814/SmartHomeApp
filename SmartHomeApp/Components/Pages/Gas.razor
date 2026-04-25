@@ -1,6 +1,64 @@
 ﻿@page "/gas"
-<h3>Gas</h3>
+@rendermode InteractiveServer
+
+<h1>Gas</h1>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<table style="width:100%">
+  <tr>
+    <th>Amount Used In KWH</th>
+    <th>Amount due in £</th>
+    
+  </tr>
+  <tr>
+        <td>625</td>
+        <td>44.72</td>
+    
+  </tr>
+
+</table>
+<br />
+<br>
+<h3>Calculate Usage</h3>
+Gas Usage:
+<input id="GasUsage" type="number" @bind="GasUsage" min="0">
+
+<button id="calcBtn" @onclick="calculateGas">Calculate Gas Price</button>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red; font-weight: bold;">@errorMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(resultMessage))
+{
+    <p style="color: green; font-weight: bold; font-size: 1.2rem;">@resultMessage</p>
+}
+
+
+
 
 @code {
+    
+    private double? GasUsage;
+    private string? errorMessage;
+    private string? resultMessage;
+
+    private void calculateGas()
+    {
+        if (GasUsage == null || GasUsage < 0)
+        {
+            errorMessage = "Please enter a valid non-negative number for gas usage.";
+            return;
+        }
+        double amountDue = GasUsage.Value * 0.0547 * 1.05 * 1.2458; // Assuming a rate of £0.0547 per KWH and adding 5% VAT and 24.58% for standing charge based on the average UK gas bill
+        resultMessage = $"For {GasUsage} KWH, the amount due is £{amountDue:F2}.";
+        errorMessage = string.Empty;
+    }
+
 
 }
